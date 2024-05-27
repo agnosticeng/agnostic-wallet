@@ -27,5 +27,9 @@
 		"vite": "^5.2.11",
 		"vitest": "^1.6.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"lucide-svelte": "^0.379.0",
+		"svelte-local-storage-store": "^0.6.4"
+	}
 }
