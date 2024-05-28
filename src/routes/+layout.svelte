@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Star, Compass, Settings } from 'lucide-svelte';
+	import { Compass, Settings } from 'lucide-svelte';
 
 	import '$lib/styles/index.css';
 
@@ -21,17 +21,15 @@
 	<div class="Separator"></div>
 
 	<div class="Stack">
-		<a aria-current={$page.url.pathname === '/' ? 'page' : undefined} href="/" class="MenuItem">
-			<Compass size="24" />
-			<span>Explore</span>
-		</a>
 		<a
-			aria-current={$page.url.pathname === '/favorites' ? 'page' : undefined}
+			aria-current={$page.route.id?.startsWith('/[address]') || $page.url.pathname == '/'
+				? 'page'
+				: undefined}
 			href="/"
 			class="MenuItem"
 		>
-			<Star size="24" />
-			<span>Favorites</span>
+			<Compass size="24" />
+			<span>Explore</span>
 		</a>
 		<a
 			aria-current={$page.url.pathname.startsWith('/settings') ? 'page' : undefined}

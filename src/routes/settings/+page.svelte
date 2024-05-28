@@ -24,39 +24,50 @@
 	<title>Settings</title>
 </svelte:head>
 
-<h1>Settings</h1>
+<div class="PageContainer">
+	<h1>Settings</h1>
 
-<section>
-	<h2>Preferences</h2>
+	<section>
+		<h2>Preferences</h2>
 
-	<article>
-		<h3>Theme</h3>
-		<form on:change={handleThemeChange} on:submit|preventDefault>
-			<label>
-				<input type="radio" name="theme" value="light" checked={$theme.preference === 'light'} />
-				<span>Light</span>
-			</label>
-			<label>
-				<input type="radio" name="theme" value="system" checked={$theme.preference === 'system'} />
-				<span>System</span>
-			</label>
-			<label>
-				<input type="radio" name="theme" value="dark" checked={$theme.preference === 'dark'} />
-				<span>Dark</span>
-			</label>
-		</form>
-	</article>
-</section>
+		<article>
+			<h3>Theme</h3>
+			<form on:change={handleThemeChange} on:submit|preventDefault>
+				<label>
+					<input type="radio" name="theme" value="light" checked={$theme.preference === 'light'} />
+					<span>Light</span>
+				</label>
+				<label>
+					<input
+						type="radio"
+						name="theme"
+						value="system"
+						checked={$theme.preference === 'system'}
+					/>
+					<span>System</span>
+				</label>
+				<label>
+					<input type="radio" name="theme" value="dark" checked={$theme.preference === 'dark'} />
+					<span>Dark</span>
+				</label>
+			</form>
+		</article>
+	</section>
 
-<!-- Just a test for the UI -->
-<section>
-	<h2>Advanced</h2>
-	<article>
-		<span style="margin: 12px auto; display: block; width: fit-content">Empty for now</span>
-	</article>
-</section>
+	<!-- Just a test for the UI -->
+	<section>
+		<h2>Advanced</h2>
+		<article>
+			<span style="margin: 12px auto; display: block; width: fit-content">Empty for now</span>
+		</article>
+	</section>
+</div>
 
 <style>
+	.PageContainer {
+		max-width: 620px;
+	}
+
 	section {
 		margin: 44px 0;
 	}
