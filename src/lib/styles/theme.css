@@ -19,7 +19,6 @@
   --menu-item-background-color-hover: hsl(240deg 5% 19% / 100%);
 }
 
-
 :root {
 
   /* Dimensions */
@@ -31,13 +30,11 @@
   Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-
 @media screen and (max-width: 768px) {
 	:root {
 		--side-bar-width: 80px;
 	}
 }
-
 
 :where(h1, h2, h3) {
   display: block;

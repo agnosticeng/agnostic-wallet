@@ -25,6 +25,14 @@ module.exports = {
 			parserOptions: {
 				parser: '@typescript-eslint/parser'
 			}
+		},
+		{
+			files: ['*'],
+			plugins: ['prettier'],
+			extends: ['plugin:prettier/recommended']
 		}
-	]
+	],
+	rules: {
+		'prettier/prettier': ['error', {}, { usePrettierrc: true }]
+	}
 };

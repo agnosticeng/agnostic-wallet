@@ -19,7 +19,6 @@ theme.subscribe(($theme) => {
 	document.documentElement.classList.add($theme.current);
 });
 
-
 export function getCurrentSystemPreference(): Theme {
-	return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+	return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
