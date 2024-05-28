@@ -41,7 +41,7 @@
       aria-current={$page.url.pathname.startsWith("/settings")
         ? "page"
         : undefined}
-      href="/"
+      href="/settings"
       class="MenuItem"
     >
       <Settings size="24" />
@@ -63,7 +63,9 @@
 </nav>
 
 <main id="main">
-  <slot />
+  <div class="PageWrapper">
+    <slot />
+  </div>
 </main>
 
 <style>
@@ -153,5 +155,12 @@
     .MenuItem > span {
       display: none;
     }
+  }
+
+  .PageWrapper {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 15px;
   }
 </style>
