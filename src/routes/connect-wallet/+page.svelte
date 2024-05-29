@@ -9,13 +9,15 @@
 
 <div class="PageContainer">
 	<section>
-		<h1>Connect your Wallet</h1>
+		<h1 data-kind="headline/h1">Connect your Wallet</h1>
 
 		<article>
-			<h3>Track any wallet</h3>
+			<h2 data-kind="small/accent">Track any wallet</h2>
 			<form method="POST" action="?/enter">
 				<Textfield name="wallet" required placeholder="Enter the wallet address" />
-				<Button type="submit"><span class="ButtonAddText">Add</span></Button>
+				<Button type="submit" data-kind="small/accent">
+					<span class="ButtonAddText">Add</span>
+				</Button>
 			</form>
 		</article>
 	</section>

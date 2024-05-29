@@ -25,17 +25,17 @@
 </svelte:head>
 
 <div class="PageContainer">
-	<h1>Settings</h1>
+	<h1 data-kind="headline/h1">Settings</h1>
 
 	<section>
-		<h2>Preferences</h2>
+		<h2 data-kind="small/accent">Preferences</h2>
 
 		<article>
-			<h3>Theme</h3>
+			<h3 data-kind="small/regular">Theme</h3>
 			<form on:change={handleThemeChange} on:submit|preventDefault>
 				<label>
 					<input type="radio" name="theme" value="light" checked={$theme.preference === 'light'} />
-					<span>Light</span>
+					<span data-kind="small/regular">Light</span>
 				</label>
 				<label>
 					<input
@@ -44,11 +44,11 @@
 						value="system"
 						checked={$theme.preference === 'system'}
 					/>
-					<span>System</span>
+					<span data-kind="small/regular">System</span>
 				</label>
 				<label>
 					<input type="radio" name="theme" value="dark" checked={$theme.preference === 'dark'} />
-					<span>Dark</span>
+					<span data-kind="small/regular">Dark</span>
 				</label>
 			</form>
 		</article>
@@ -56,7 +56,7 @@
 
 	<!-- Just a test for the UI -->
 	<section>
-		<h2>Advanced</h2>
+		<h2 data-kind="small/accent">Advanced</h2>
 		<article>
 			<span style="margin: 12px auto; display: block; width: fit-content">Empty for now</span>
 		</article>

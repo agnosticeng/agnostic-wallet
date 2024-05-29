@@ -1,6 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { WALLETS_COOKIE_NAME, parse } from '$lib/utils/wallets';
+import { isValidAddress } from 'ethereumjs-util';
 
 export const load = (async () => {
 	return {};
@@ -14,8 +15,8 @@ export const actions = {
 		const upcoming = data.get('wallet');
 
 		// TODO: Check if it is a valid wallet address
-		if (typeof upcoming !== 'string') {
-			return fail(400, { missing: true });
+		if (typeof upcoming !== 'string' || !isValidAddress(upcoming)) {
+			return fail(400, { invalid: true });
 		}
 
 		if (!wallets.includes(upcoming)) {

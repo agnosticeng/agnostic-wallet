@@ -1,3 +1,5 @@
+@import './typography.css';
+
 :root.light {
 	color-scheme: light;
 
@@ -5,8 +7,9 @@
 	--background-color-secondary: hsl(240deg 11% 96% / 100%);
 
 	--separator-color: hsl(0 0 85% / 100%);
-
 	--menu-item-background-color-hover: hsl(220deg 6% 91% / 100%);
+
+	--active-color: hsl(223deg 86% 55% / 100%);
 }
 
 :root.dark {
@@ -17,11 +20,14 @@
 
 	--separator-color: hsl(0 0 26% / 100%);
 	--menu-item-background-color-hover: hsl(240deg 5% 19% / 100%);
+
+	--active-color: hsl(200deg 100% 48% / 100%);
 }
 
 :root {
 	/* Dimensions */
 	--side-bar-width: 240px;
+	--header-height: 64px;
 
 	/* typography */
 	--font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -38,23 +44,4 @@
 	display: block;
 	padding: 0;
 	margin: 0;
-}
-
-h1 {
-	font-size: 40px;
-	line-height: 48px;
-	font-weight: 500;
-	letter-spacing: -0.5px;
-}
-
-h2 {
-	font-size: 14px;
-	line-height: 20px;
-	font-weight: 500;
-}
-
-h3 {
-	font-size: 14px;
-	line-height: 20px;
-	font-weight: 400;
 }

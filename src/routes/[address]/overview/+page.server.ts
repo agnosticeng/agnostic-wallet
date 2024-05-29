@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
 
-export const load = (async (e) => {
-	return { address: e.params.address };
+export const load = (async () => {
+	return {};
 }) satisfies PageServerLoad;

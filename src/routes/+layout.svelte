@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Compass, Settings } from 'lucide-svelte';
+	import { Eye, Settings } from 'lucide-svelte';
 
 	import '$lib/styles/index.css';
 
@@ -8,6 +8,7 @@
 	import ThemeDetector from '$lib/components/ThemeDetector.svelte';
 
 	import { page } from '$app/stores';
+	import Header from '$lib/components/nav/Header.svelte';
 </script>
 
 <SkipLink href="#main" />
@@ -15,7 +16,7 @@
 
 <nav>
 	<h1>
-		<img alt="Agnostic" src={agnostic} />
+		<div></div>
 	</h1>
 
 	<div class="Separator"></div>
@@ -28,8 +29,8 @@
 			href="/"
 			class="MenuItem"
 		>
-			<Compass size="24" />
-			<span>Explore</span>
+			<Eye size="24" />
+			<span data-kind="small/accent">Overview</span>
 		</a>
 		<a
 			aria-current={$page.url.pathname.startsWith('/settings') ? 'page' : undefined}
@@ -37,7 +38,7 @@
 			class="MenuItem"
 		>
 			<Settings size="24" />
-			<span>Settings</span>
+			<span data-kind="small/accent">Settings</span>
 		</a>
 	</div>
 
@@ -49,12 +50,13 @@
 			rel="noopener noreferrer"
 			data-sveltekit-preload-data="off"
 		>
-			Launch app
+			<img alt="Agnostic" src={agnostic} />
 		</a>
 	</div>
 </nav>
 
 <main id="main">
+	<Header />
 	<div class="PageWrapper">
 		<slot />
 	</div>
@@ -90,7 +92,7 @@
 		margin: 2.4rem 0 0;
 	}
 
-	h1 > img {
+	h1 > div {
 		width: 120px;
 		margin: 0 auto;
 	}
@@ -120,6 +122,7 @@
 		height: 48px;
 		align-items: center;
 		padding: 0 12px 0 16px;
+		text-decoration: none;
 	}
 
 	.MenuItem:hover {
@@ -127,11 +130,7 @@
 	}
 
 	.MenuItem[aria-current='page'] {
-		font-weight: 600;
-	}
-
-	.MenuItem[aria-current='page'] > :global(svg) {
-		stroke-width: 2;
+		color: var(--active-color);
 	}
 
 	div.SideBarFooter {
@@ -139,8 +138,20 @@
 		position: relative;
 	}
 
+	div.SideBarFooter > a {
+		background-color: hsl(0 0 85% / 100%);
+		border-radius: 6px;
+		display: block;
+		width: fit-content;
+		padding: 4px 5px;
+	}
+
+	div.SideBarFooter > a > img {
+		width: 70px;
+	}
+
 	@media screen and (max-width: 768px) {
-		h1 > img {
+		h1 > div {
 			width: 74px;
 		}
 
