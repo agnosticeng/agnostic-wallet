@@ -9,6 +9,9 @@
 
 	import { page } from '$app/stores';
 	import Header from '$lib/components/nav/Header.svelte';
+	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 </script>
 
 <SkipLink href="#main" />
@@ -16,10 +19,8 @@
 
 <nav>
 	<h1>
-		<div></div>
+		<div data-placeholder style="height: 44px;"></div>
 	</h1>
-
-	<div class="Separator"></div>
 
 	<div class="Stack">
 		<a
@@ -56,7 +57,7 @@
 </nav>
 
 <main id="main">
-	<Header />
+	<Header gasPrice={data.gas} />
 	<div class="PageWrapper">
 		<slot />
 	</div>
@@ -89,20 +90,14 @@
 	}
 
 	h1 {
-		margin: 2.4rem 0 0;
+		margin: 8px;
+		border-radius: 8px;
+		padding: 8px 8px 8px 12px;
 	}
 
 	h1 > div {
 		width: 120px;
 		margin: 0 auto;
-	}
-
-	.Separator {
-		height: 1px;
-		width: 100%;
-		background-color: var(--separator-color);
-
-		margin-top: 32px;
 	}
 
 	.Stack {

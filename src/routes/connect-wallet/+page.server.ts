@@ -1,7 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { WALLETS_COOKIE_NAME, parse } from '$lib/utils/wallets';
-import { isValidAddress } from 'ethereumjs-util';
+import { isValidAddress } from '$lib/utils/address';
 
 export const load = (async () => {
 	return {};

@@ -10,7 +10,12 @@
 <header>
 	<section>
 		<form on:submit|preventDefault>
-			<Textfield name="wallet" placeholder="Enter the wallet address" />
+			<Textfield
+				style="height: 36px"
+				name="wallet"
+				placeholder="Enter the wallet address"
+				type="search"
+			/>
 		</form>
 
 		<article>

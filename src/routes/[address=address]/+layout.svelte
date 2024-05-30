@@ -20,9 +20,16 @@
 			<img src={blo(data.address, 106)} alt="{data.address}'s image" />
 		</div>
 		<div class="Overview__InfoContainer">
-			<h1 data-kind="headline/h3">{trunc_wallet_address(data.address)}</h1>
-			<h1 data-kind="headline/h1">$69,139,192</h1>
-			<span>-3.8% ($2,767,918)</span>
+			<div>
+				<h1 data-kind="headline/h3">{trunc_wallet_address(data.address)}</h1>
+				<LightButton style="width: 32px;">
+					<ChevronDown style="flex-shrink: 0;" size="20" />
+				</LightButton>
+			</div>
+			<div>
+				<div data-kind="headline/h1">$69,139,192</div>
+				<span>-3.8% ($2,767,918)</span>
+			</div>
 		</div>
 	</article>
 	<article class="OverviewAction"></article>
@@ -94,6 +101,21 @@
 		grid-template-columns: minmax(0px, auto);
 	}
 
+	.Overview__InfoContainer > div:has(h1) {
+		height: 24px;
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(min-content, max-content);
+		gap: 4px;
+		align-items: center;
+	}
+
+	.Overview__InfoContainer > div:has(div[data-kind='headline/h1']) {
+		display: grid;
+		gap: 4px;
+		grid-template-columns: minmax(0px, auto);
+	}
+
 	.Overview__ImageContainer img {
 		width: 100%;
 		height: 100%;
@@ -112,6 +134,8 @@
 		align-items: end;
 		justify-content: space-between;
 		border-bottom: 1px solid var(--separator-color);
+		background-color: var(--background-color-main);
+		z-index: 1;
 	}
 
 	.Tabs > article:first-child {

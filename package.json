@@ -34,7 +34,6 @@
 	"type": "module",
 	"dependencies": {
 		"blo": "^1.2.0",
-		"ethereumjs-util": "^7.1.5",
 		"lucide-svelte": "^0.379.0",
 		"svelte-local-storage-store": "^0.6.4"
 	}
