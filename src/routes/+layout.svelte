@@ -24,7 +24,7 @@
 
 	<div class="Stack">
 		<a
-			aria-current={$page.route.id?.startsWith('/[address]') || $page.url.pathname == '/'
+			aria-current={$page.route.id?.startsWith('/[address=address]') || $page.url.pathname == '/'
 				? 'page'
 				: undefined}
 			href="/"
@@ -145,13 +145,30 @@
 		width: 70px;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 1200px) {
 		h1 > div {
 			width: 74px;
 		}
 
+		.MenuItem {
+			place-items: center;
+			height: auto;
+			padding: 10px 0px;
+			grid-template-columns: 1fr;
+			gap: 4px;
+		}
+
 		.MenuItem > span {
-			display: none;
+			font-size: 11px;
+			line-height: 12px;
+		}
+
+		div.SideBarFooter {
+			margin: auto auto 22px;
+		}
+
+		div.SideBarFooter > a > img {
+			width: 55px;
 		}
 	}
 

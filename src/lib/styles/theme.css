@@ -1,5 +1,3 @@
-@import './typography.css';
-
 :root.light {
 	color-scheme: light;
 
@@ -34,7 +32,7 @@
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
 	:root {
 		--side-bar-width: 80px;
 	}

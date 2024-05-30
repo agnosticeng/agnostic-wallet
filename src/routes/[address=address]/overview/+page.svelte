@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Wallet } from 'lucide-svelte';
 	import TokenCard from '$lib/components/TokenCard.svelte';
 	import type { PageData } from './$types';
 
@@ -30,36 +31,56 @@
 
 <article>
 	<h2 data-kind="headline/h2">Assets</h2>
-	<div style="padding: 24px 24px 0;">
-		<div class="AssetsTable">
-			<div class="Row Row_Head">
-				<span data-kind="label/accent">ASSET</span>
-				<span data-kind="label/accent">PRICE</span>
-				<span data-kind="label/accent">BALANCE</span>
-				<span data-kind="label/accent">VALUE</span>
+	<div style="padding: 24px;">
+		{#if data.tokens?.length}
+			<div class="AssetsSummary">
+				<div class="Icon">
+					<Wallet size="24" />
+				</div>
+				<div data-kind="headline/h3">
+					Wallet · {formatCurrency(
+						data.tokens.reduce((a, k) => a + k.amount.usd, 0),
+						2
+					)}
+				</div>
 			</div>
-			<div class="Body">
-				{#each data.tokens ?? [] as token (token.id)}
-					<div class="Row Row_Body">
-						<TokenCard
-							address={token.address}
-							chain={token.chain}
-							name={token.name}
-							symbol={token.symbol}
-						/>
-						<div data-kind="small/regular">
-							{formatCurrency(token.currentPrice)}
+			<div class="AssetsTable">
+				<div class="Row Row_Head">
+					<span data-kind="label/accent">ASSET</span>
+					<span data-kind="label/accent">PRICE</span>
+					<span data-kind="label/accent">BALANCE</span>
+					<span data-kind="label/accent">VALUE</span>
+				</div>
+				<div class="Body">
+					{#each data.tokens ?? [] as token (token.id)}
+						<div class="Row Row_Body">
+							<TokenCard
+								address={token.address}
+								chain={token.chain}
+								name={token.name}
+								symbol={token.symbol}
+							/>
+							<div data-kind="small/regular">
+								{formatCurrency(token.currentPrice)}
+							</div>
+							<div data-kind="small/regular">
+								{formatNumber(token.amount.unit)}
+							</div>
+							<div data-kind="small/regular">
+								{formatCurrency(token.amount.usd, 2)}
+							</div>
 						</div>
-						<div data-kind="small/regular">
-							{formatNumber(token.amount.unit)}
-						</div>
-						<div data-kind="small/regular">
-							{formatCurrency(token.amount.usd, 2)}
-						</div>
-					</div>
-				{/each}
+					{/each}
+				</div>
 			</div>
-		</div>
+		{:else}
+			<div class="EmptyAsset">
+				<div>
+					<div data-kind="headline/h1" style="text-align: center;">🥺</div>
+					<span>No Assets yet</span>
+				</div>
+			</div>
+		{/if}
 	</div>
 </article>
 
@@ -74,9 +95,9 @@
 		margin-bottom: 30px;
 	}
 
-	@media screen and (max-width: 576px) {
+	@media screen and (max-width: 768px) {
 		section {
-			display: contents;
+			display: block;
 		}
 
 		section > article:last-child {
@@ -105,6 +126,25 @@
 		padding: 16px;
 	}
 
+	.AssetsSummary {
+		margin-bottom: 28px;
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(min-content, max-content);
+		gap: 12px;
+		align-items: center;
+	}
+
+	.AssetsSummary > .Icon {
+		display: grid;
+		place-items: center;
+		color: white;
+		background-color: var(--active-color);
+		border-radius: 4px;
+		height: 32px;
+		width: 32px;
+	}
+
 	.AssetsTable {
 		display: grid;
 		gap: 4px;
@@ -126,5 +166,17 @@
 	.AssetsTable .Row_Body > div {
 		display: flex;
 		align-items: center;
+	}
+
+	.EmptyAsset {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.EmptyAsset > div {
+		display: grid;
+		gap: 8px;
+		grid-template-columns: minmax(0px, auto);
 	}
 </style>
