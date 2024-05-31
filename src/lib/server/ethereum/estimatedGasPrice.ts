@@ -56,6 +56,11 @@ export async function GetEstimatedGasPrice(
 
 	const json = await response.json();
 
+	if (json.errors) {
+		console.error(json.errors);
+		throw new Error('GetEstimatedGasPrice failed');
+	}
+
 	return transform(json.data);
 }
 

@@ -4,7 +4,7 @@
 	import ethereum_src from '$lib/images/ethereum.logo.png';
 	import { Fuel } from 'lucide-svelte';
 
-	export let gasPrice: number = 22;
+	export let gasPrice: number | undefined = undefined;
 </script>
 
 <header>
