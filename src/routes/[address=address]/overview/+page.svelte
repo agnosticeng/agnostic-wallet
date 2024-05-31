@@ -65,6 +65,7 @@
 							</div>
 							<div data-kind="small/regular">
 								{formatNumber(token.amount.unit)}
+								{token.symbol}
 							</div>
 							<div data-kind="small/regular">
 								{formatCurrency(token.amount.usd, 2)}
