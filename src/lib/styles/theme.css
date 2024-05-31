@@ -1,0 +1,45 @@
+:root.light {
+	color-scheme: light;
+
+	--background-color-main: hsl(0 0 100% / 100%);
+	--background-color-secondary: hsl(240deg 11% 96% / 100%);
+
+	--separator-color: hsl(0 0 85% / 100%);
+	--menu-item-background-color-hover: hsl(220deg 6% 91% / 100%);
+
+	--active-color: hsl(223deg 86% 55% / 100%);
+}
+
+:root.dark {
+	color-scheme: dark;
+
+	--background-color-main: hsl(0 0 13% / 100%);
+	--background-color-secondary: hsl(0 0 17% / 100%);
+
+	--separator-color: hsl(0 0 26% / 100%);
+	--menu-item-background-color-hover: hsl(240deg 5% 19% / 100%);
+
+	--active-color: hsl(200deg 100% 48% / 100%);
+}
+
+:root {
+	/* Dimensions */
+	--side-bar-width: 240px;
+	--header-height: 64px;
+
+	/* typography */
+	--font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@media screen and (max-width: 1200px) {
+	:root {
+		--side-bar-width: 80px;
+	}
+}
+
+:where(h1, h2, h3) {
+	display: block;
+	padding: 0;
+	margin: 0;
+}

@@ -25,6 +25,17 @@ module.exports = {
 			parserOptions: {
 				parser: '@typescript-eslint/parser'
 			}
+		},
+		{
+			files: ['*'],
+			// QUICK FIX: disable eslint prettier on svelte files
+			// include them make the auto-import inactive
+			excludedFiles: ['*.svelte'],
+			plugins: ['prettier'],
+			extends: ['plugin:prettier/recommended']
 		}
-	]
+	],
+	rules: {
+		'prettier/prettier': ['error', {}, { usePrettierrc: true }]
+	}
 };
