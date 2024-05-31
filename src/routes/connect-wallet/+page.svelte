@@ -12,9 +12,15 @@
 		<h1 data-kind="headline/h1">Connect your Wallet</h1>
 
 		<article>
-			<h2 data-kind="small/accent">Track any wallet</h2>
+			<label for="track-asset-input" data-kind="small/accent">Track any wallet</label>
 			<form method="POST" action="?/enter">
-				<Textfield name="wallet" required placeholder="Enter the wallet address" />
+				<Textfield
+					name="wallet"
+					id="track-asset-input"
+					required
+					placeholder="Enter the wallet address"
+					data-1p-ignore
+				/>
 				<Button type="submit" data-kind="small/accent">
 					<span class="ButtonAddText">Add</span>
 				</Button>

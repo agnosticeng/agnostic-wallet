@@ -9,9 +9,9 @@ Accessibility helper component to skip to the main content
 
 <style>
 	a {
-		background: hsl(0, 0%, 100%);
-		color: hsl(0, 0%, 27%);
-		border: 2px solid hsl(0, 0%, 13%);
+		background: hsl(0deg 0% 100%);
+		color: hsl(0deg 0% 27%);
+		border: 2px solid hsl(0deg 0% 13%);
 		padding: 8px;
 		position: absolute;
 		inset-block-start: 0;

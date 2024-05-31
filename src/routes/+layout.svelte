@@ -134,7 +134,7 @@
 	}
 
 	div.SideBarFooter > a {
-		background-color: hsl(0 0 85% / 100%);
+		background-color: hsl(0deg 0% 85% / 100%);
 		border-radius: 6px;
 		display: block;
 		width: fit-content;
