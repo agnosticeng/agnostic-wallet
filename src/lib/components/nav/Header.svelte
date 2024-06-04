@@ -1,15 +1,31 @@
 <script lang="ts">
 	import LightButton from '$lib/components/LightButton.svelte';
 	import Textfield from '$lib/components/Textfield.svelte';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import ethereum_src from '$lib/images/ethereum.logo.png';
 	import { Fuel } from 'lucide-svelte';
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 
 	export let gasPrice: number | undefined = undefined;
 </script>
 
 <header>
 	<section>
-		<form on:submit|preventDefault>
+		<form
+			method="POST"
+			action="/"
+			use:enhance={({ formElement }) => {
+				return async ({ result }) => {
+					console.log(result);
+					if (result.type === 'redirect') {
+						formElement.reset();
+						await goto(result.location, { invalidateAll: true });
+						return;
+					}
+				};
+			}}
+		>
 			<Textfield
 				style="height: 36px"
 				name="wallet"
@@ -35,6 +51,7 @@
 			<LightButton>
 				<span data-kind="small/accent">USD</span>
 			</LightButton>
+			<ThemeToggle />
 		</article>
 	</section>
 </header>

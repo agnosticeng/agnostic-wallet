@@ -5,9 +5,11 @@
 	--background-color-secondary: hsl(240deg 11% 96% / 100%);
 
 	--separator-color: hsl(0deg 0% 85% / 100%);
-	--menu-item-background-color-hover: hsl(220deg 6% 91% / 100%);
+	--background-color-hover: hsl(220deg 6% 91% / 100%);
 
 	--active-color: hsl(223deg 86% 55% / 100%);
+	--green-color: hsl(144deg 99% 33% / 100%);
+	--orange-color: hsl(34deg 100% 55% / 100%);
 }
 
 :root.dark {
@@ -17,9 +19,11 @@
 	--background-color-secondary: hsl(0deg 0% 17% / 100%);
 
 	--separator-color: hsl(0deg 0% 26% / 100%);
-	--menu-item-background-color-hover: hsl(240deg 5% 19% / 100%);
+	--background-color-hover: hsl(240deg 5% 19% / 100%);
 
 	--active-color: hsl(200deg 100% 48% / 100%);
+	--green-color: hsl(133deg 47% 53% / 100%);
+	--orange-color: hsl(34deg 100% 55% / 100%);
 }
 
 :root {

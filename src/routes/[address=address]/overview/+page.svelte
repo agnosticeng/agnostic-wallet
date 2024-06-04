@@ -2,6 +2,7 @@
 	import { Wallet } from 'lucide-svelte';
 	import TokenCard from '$lib/components/TokenCard.svelte';
 	import type { PageData } from './$types';
+	import EventIcon from '$lib/components/EventIcon.svelte';
 
 	export let data: PageData;
 
@@ -16,6 +17,10 @@
 	function formatNumber(n: number) {
 		return Intl.NumberFormat('en-US', { maximumFractionDigits: 3 }).format(n);
 	}
+
+	function formatDate(n: Date) {
+		return Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'short' }).format(n);
+	}
 </script>
 
 <section>
@@ -25,7 +30,35 @@
 	</article>
 	<article>
 		<h2 data-kind="headline/h2">History</h2>
-		<div></div>
+		<div>
+			{#if data.events}
+				{@const events = data.events.slice(0, 5)}
+				<div class="HistoryList">
+					{#each events as ev (ev.id)}
+						<div>
+							<div>
+								<EventIcon type={ev.type} size={32} />
+								<div>
+									<div data-kind="small/accent">{ev.type}</div>
+									<div data-kind="label/regular">{formatDate(ev.timestamp)}</div>
+								</div>
+							</div>
+							<div data-kind="small/regular">
+								{ev.value}
+								{ev.token.symbol}
+							</div>
+						</div>
+					{/each}
+				</div>
+			{:else}
+				<div class="Empty">
+					<div>
+						<div data-kind="headline/h1" style="text-align: center;">🥺</div>
+						<span>No transactions yet</span>
+					</div>
+				</div>
+			{/if}
+		</div>
 	</article>
 </section>
 
@@ -75,7 +108,7 @@
 				</div>
 			</div>
 		{:else}
-			<div class="EmptyAsset">
+			<div class="Empty">
 				<div>
 					<div data-kind="headline/h1" style="text-align: center;">🥺</div>
 					<span>No Assets yet</span>
@@ -146,6 +179,30 @@
 		width: 32px;
 	}
 
+	div:has(> .HistoryList) {
+		padding: 0;
+		padding-top: 12px;
+	}
+
+	.HistoryList > div {
+		height: 44px;
+		margin: 6px 24px;
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(min-content, max-content);
+		gap: 12px;
+		align-items: center;
+		justify-content: space-between;
+		grid-template-columns: minmax(min-content, max-content) minmax(28px, max-content);
+	}
+	.HistoryList > div > div {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(min-content, max-content);
+		gap: 8px;
+		align-items: center;
+	}
+
 	.AssetsTable {
 		display: grid;
 		gap: 4px;
@@ -169,13 +226,14 @@
 		align-items: center;
 	}
 
-	.EmptyAsset {
+	.Empty {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		height: 100%;
 	}
 
-	.EmptyAsset > div {
+	.Empty > div {
 		display: grid;
 		gap: 8px;
 		grid-template-columns: minmax(0px, auto);

@@ -16,6 +16,7 @@
 		outline: none;
 		border: none;
 		background: none;
+		color: currentColor;
 
 		padding: 9px 19px;
 		height: 40px;
