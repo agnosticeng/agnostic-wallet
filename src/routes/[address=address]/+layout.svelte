@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { blo } from 'blo';
-	import type { LayoutData } from './$types';
-	import { trunc_wallet_address } from '$lib/utils/wallets';
+	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 	import LightButton from '$lib/components/LightButton.svelte';
 	import ethereum_src from '$lib/images/ethereum.logo.png';
-	import { ChevronDown } from 'lucide-svelte';
-	import { page } from '$app/stores';
+	import { trunc_wallet_address } from '$lib/utils/wallets';
+	import { blo } from 'blo';
+	import { ChevronDown, Star } from 'lucide-svelte';
+	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
 </script>
@@ -28,11 +29,31 @@
 			</div>
 			<div>
 				<div data-kind="headline/h1">$69,139,192</div>
-				<span>-3.8% ($2,767,918)</span>
+				<span></span>
 			</div>
 		</div>
 	</article>
-	<article class="OverviewAction"></article>
+	<article class="OverviewAction">
+		<form
+			method="POST"
+			use:enhance={({ action }) =>
+				({ result }) => {
+					if (result.type === 'success' || result.type === 'redirect')
+						data.isFavorite = action.search.includes('/enter');
+				}}
+		>
+			{#if data.isFavorite}
+				<LightButton formmethod="POST" formaction="/?/remove" style="padding: 0 6px">
+					<Star size="20" fill="currentColor" />
+				</LightButton>
+			{:else}
+				<input name="wallet" type="hidden" value={data.address} />
+				<LightButton formmethod="POST" formaction="/?/enter" style="padding: 0 6px">
+					<Star size="20" />
+				</LightButton>
+			{/if}
+		</form>
+	</article>
 </section>
 
 <section class="Tabs">
@@ -46,6 +67,7 @@
 		<a
 			aria-current={$page.url.pathname.endsWith('nfts') ? 'page' : undefined}
 			href="/{data.address}/overview"
+			aria-disabled="true"
 		>
 			<span data-kind="body/accent">NFTs</span>
 		</a>
@@ -154,6 +176,12 @@
 		padding-bottom: 10px;
 	}
 
+	.Tabs > article:first-child a[aria-disabled='true'] {
+		pointer-events: none;
+		color: lightgrey;
+		user-select: none;
+	}
+
 	.Tabs > article:first-child a::after {
 		position: absolute;
 		bottom: 0;
@@ -162,7 +190,7 @@
 		height: 2px;
 	}
 
-	.Tabs > article:first-child a:hover::after {
+	.Tabs > article:first-child a:not([aria-disabled='true']):hover::after {
 		content: '';
 		background-color: currentColor;
 	}

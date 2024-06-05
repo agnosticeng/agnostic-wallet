@@ -14,10 +14,9 @@
 	<section>
 		<form
 			method="POST"
-			action="/"
+			action="/?/enter"
 			use:enhance={({ formElement }) => {
 				return async ({ result }) => {
-					console.log(result);
 					if (result.type === 'redirect') {
 						formElement.reset();
 						await goto(result.location, { invalidateAll: true });
