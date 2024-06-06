@@ -9,6 +9,20 @@
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
+
+	function formatCurrency(n: number) {
+		return Intl.NumberFormat('en-US', {
+			currency: 'USD',
+			style: 'currency'
+		}).format(n);
+	}
+
+	function formatRatio(n: number) {
+		return Intl.NumberFormat('en-US', {
+			style: 'percent',
+			maximumFractionDigits: 2
+		}).format(n);
+	}
 </script>
 
 <svelte:head>
@@ -28,8 +42,14 @@
 				</LightButton>
 			</div>
 			<div>
-				<div data-kind="headline/h1">$69,139,192</div>
-				<span></span>
+				<div data-kind="headline/h1">{formatCurrency(data.wealth?.value ?? 0)}</div>
+				<span
+					style:color={(data.wealth?.ratio ?? 0) > 0 ? 'var(--green-color)' : 'var(--red-color)'}
+				>
+					{formatRatio(data.wealth?.ratio ?? 0)} ({formatCurrency(
+						Math.abs(data.wealth?.delta ?? 0)
+					)})
+				</span>
 			</div>
 		</div>
 	</article>

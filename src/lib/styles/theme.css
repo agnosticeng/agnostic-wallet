@@ -10,6 +10,7 @@
 	--active-color: hsl(223deg 86% 55% / 100%);
 	--green-color: hsl(144deg 99% 33% / 100%);
 	--orange-color: hsl(34deg 100% 55% / 100%);
+	--red-color: hsl(0deg 100% 65% / 100%);
 }
 
 :root.dark {
@@ -24,6 +25,7 @@
 	--active-color: hsl(200deg 100% 48% / 100%);
 	--green-color: hsl(133deg 47% 53% / 100%);
 	--orange-color: hsl(34deg 100% 55% / 100%);
+	--red-color: hsl(0deg 100% 68% / 100%);
 }
 
 :root {
