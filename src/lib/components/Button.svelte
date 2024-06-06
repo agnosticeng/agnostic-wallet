@@ -29,4 +29,8 @@
 
 		border: 1px solid var(--separator-color);
 	}
+
+	button:not(:disabled):hover {
+		background-color: var(--background-color-hover);
+	}
 </style>

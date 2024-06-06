@@ -3,6 +3,7 @@
 	import TokenCard from '$lib/components/TokenCard.svelte';
 	import type { PageData } from './$types';
 	import EventIcon from '$lib/components/EventIcon.svelte';
+	import Button from '$lib/components/Button.svelte';
 
 	export let data: PageData;
 
@@ -49,6 +50,11 @@
 							</div>
 						</div>
 					{/each}
+				</div>
+				<div class="HistoryFooter">
+					<a href="history">
+						<Button style="height: 32px;">See all</Button>
+					</a>
 				</div>
 			{:else}
 				<div class="Empty">
@@ -201,6 +207,17 @@
 		grid-auto-columns: minmax(min-content, max-content);
 		gap: 8px;
 		align-items: center;
+	}
+
+	.HistoryFooter {
+		border-top: 1px solid var(--separator-color);
+		display: grid;
+		place-items: center;
+		padding: 16px 0;
+	}
+
+	.HistoryFooter > a {
+		text-decoration: none;
 	}
 
 	.AssetsTable {
