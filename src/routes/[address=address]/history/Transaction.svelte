@@ -107,7 +107,7 @@
 		article {
 			border-top: 1px solid var(--separator-color);
 			height: 108px;
-			padding: 2px 8px 5px;
+			padding: 5px 8px;
 
 			grid-auto-flow: initial;
 			grid-auto-columns: initial;
