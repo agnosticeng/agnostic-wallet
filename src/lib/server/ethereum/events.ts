@@ -77,11 +77,12 @@ export async function GetEvents(variables: GetEventsVariables, opts: RequestOpti
 function transform(data?: GetEventsQuery) {
 	if (!data?.wallet_transfers_history?.length) return undefined;
 	return data.wallet_transfers_history.map((ev) => ({
-		id: toBase64(`${ev.token_address}:${ev.timestamp}:${ev.type}`),
+		id: toBase64(`${ev.token_address}:${ev.type}:${new Date(ev.timestamp).getTime()}`),
 		timestamp: new Date(ev.timestamp),
 		type: ev.type,
 		token: {
 			id: ev.token_address,
+			address: ev.token_address,
 			name: normalize(ev.token_name),
 			symbol: normalize(ev.token_symbol)
 		},
@@ -91,6 +92,8 @@ function transform(data?: GetEventsQuery) {
 		valueInUSD: parseFloat(ev.usd)
 	}));
 }
+
+export type Transaction = NonNullable<ReturnType<typeof transform>>[number];
 
 function toBase64(str: string) {
 	return Buffer.from(str).toString('base64').replace(/(=)*$/, '');

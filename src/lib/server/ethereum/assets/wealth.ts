@@ -68,6 +68,6 @@ function transform(data?: WalletWealthQuery) {
 	return {
 		value: today,
 		delta: today - yday,
-		ratio: (today - yday) / yday
+		ratio: yday === 0 ? 0 : (today - yday) / yday
 	};
 }

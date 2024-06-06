@@ -44,7 +44,7 @@
 			<div>
 				<div data-kind="headline/h1">{formatCurrency(data.wealth?.value ?? 0)}</div>
 				<span
-					style:color={(data.wealth?.ratio ?? 0) > 0 ? 'var(--green-color)' : 'var(--red-color)'}
+					style:color={(data.wealth?.ratio ?? 0) >= 0 ? 'var(--green-color)' : 'var(--red-color)'}
 				>
 					{formatRatio(data.wealth?.ratio ?? 0)} ({formatCurrency(
 						Math.abs(data.wealth?.delta ?? 0)
@@ -93,7 +93,7 @@
 		</a>
 		<a
 			aria-current={$page.url.pathname.endsWith('history') ? 'page' : undefined}
-			href="/{data.address}/overview"
+			href="/{data.address}/history"
 		>
 			<span data-kind="body/accent">History</span>
 		</a>
@@ -198,7 +198,7 @@
 
 	.Tabs > article:first-child a[aria-disabled='true'] {
 		pointer-events: none;
-		color: lightgrey;
+		color: var(--grey-color);
 		user-select: none;
 	}
 
