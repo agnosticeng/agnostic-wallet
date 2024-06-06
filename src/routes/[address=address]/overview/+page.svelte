@@ -216,6 +216,17 @@
 		grid-template-columns: 1fr repeat(3, 170px);
 	}
 
+	@media screen and (max-width: 768px) {
+		.AssetsTable .Row {
+			grid-template-columns: 1fr repeat(1, 170px);
+		}
+
+		.AssetsTable .Row.Row_Head > span:nth-child(2),
+		.AssetsTable .Row.Row_Head > span:nth-child(3) {
+			display: none;
+		}
+	}
+
 	.AssetsTable .Row_Body {
 		position: relative;
 		height: 60px;
@@ -224,6 +235,13 @@
 	.AssetsTable .Row_Body > div {
 		display: flex;
 		align-items: center;
+	}
+
+	@media screen and (max-width: 768px) {
+		.AssetsTable .Row_Body > div:nth-child(2),
+		.AssetsTable .Row_Body > div:nth-child(3) {
+			display: none;
+		}
 	}
 
 	.Empty {
