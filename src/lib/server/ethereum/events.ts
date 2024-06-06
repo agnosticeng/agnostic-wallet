@@ -96,7 +96,7 @@ function transform(data?: GetEventsQuery) {
 export type Transaction = NonNullable<ReturnType<typeof transform>>[number];
 
 function toBase64(str: string) {
-	return Buffer.from(str).toString('base64').replace(/(=)*$/, '');
+	return btoa(str).replace(/(=)*$/, '');
 }
 
 function normalize(str: string) {
