@@ -16,12 +16,12 @@
 			method="POST"
 			action="/?/enter"
 			use:enhance={({ formElement }) => {
+				const address = formElement.wallet.value;
 				return async ({ result }) => {
-					if (result.type === 'redirect') {
-						formElement.reset();
-						await goto(result.location, { invalidateAll: true });
-						return;
-					}
+					if (result.type !== 'success') return;
+
+					formElement.reset();
+					await goto(`/${address}/overview`, { invalidateAll: true });
 				};
 			}}
 		>
