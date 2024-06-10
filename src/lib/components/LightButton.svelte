@@ -14,7 +14,6 @@
 	button {
 		--background-color: transparent;
 
-		cursor: pointer;
 		border: none;
 		outline: none;
 		color: currentColor;
@@ -30,5 +29,6 @@
 
 	button:not(:disabled):hover {
 		--background-color: var(--background-color-hover);
+		cursor: pointer;
 	}
 </style>

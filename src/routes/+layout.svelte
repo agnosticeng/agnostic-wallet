@@ -1,9 +1,7 @@
 <script lang="ts">
-	import '$lib/styles/index.css';
-
-	import SkipLink from '$lib/components/nav/SkipLink.svelte';
-
 	import Header from '$lib/components/nav/Header.svelte';
+	import SkipLink from '$lib/components/nav/SkipLink.svelte';
+	import '$lib/styles/index.css';
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
@@ -11,7 +9,7 @@
 
 <SkipLink href="#main" />
 
-<Header gasPrice={data.gas} />
+<Header gas={data.gas} />
 <div class="PageWrapper">
 	<slot />
 </div>

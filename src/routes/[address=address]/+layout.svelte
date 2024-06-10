@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import BloImage from '$lib/components/BloImage.svelte';
 	import LightButton from '$lib/components/LightButton.svelte';
+	import Select from '$lib/components/Select';
 	import ethereum_src from '$lib/images/ethereum.logo.png';
 	import { trunc_wallet_address } from '$lib/utils/wallets';
 	import { blo } from 'blo';
-	import { ChevronDown, Copy, Star } from 'lucide-svelte';
+	import { Copy, Star } from 'lucide-svelte';
 	import type { LayoutData } from './$types';
-	import Select from '$lib/components/Select';
-	import { goto } from '$app/navigation';
-	import BloImage from '$lib/components/BloImage.svelte';
 
 	export let data: LayoutData;
 
@@ -144,10 +144,9 @@
 		</a>
 	</article>
 	<article>
-		<LightButton style="padding: 9px 19px; height: 40px; gap: 8px;">
+		<LightButton style="padding: 9px 19px; height: 40px; gap: 8px;" disabled>
 			<img alt="Ethereum" src={ethereum_src} width="20" height="20" />
 			<span data-kind="small/accent">Ethereum</span>
-			<ChevronDown size="16" style="stroke-width: 2" />
 		</LightButton>
 	</article>
 </section>

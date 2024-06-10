@@ -1,15 +1,22 @@
 <script lang="ts">
 	import { computePosition, flip, offset, shift, type Placement } from '@floating-ui/dom';
 	import { ChevronDown } from 'lucide-svelte';
-	import { tick } from 'svelte';
+	import { createEventDispatcher, tick } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { fade } from 'svelte/transition';
 	import { clickoutside } from './clickoutside';
 	import { portal } from './portal';
 
 	export let placement: Placement = 'bottom-start';
+	export let disabled = false;
+
+	const dispatch = createEventDispatcher<{ open: unknown }>();
 
 	const open = writable(false);
+
+	open.subscribe((value) => {
+		if (value) dispatch('open');
+	});
 
 	let button: HTMLButtonElement;
 	let popup: HTMLElement;
@@ -48,7 +55,14 @@
 
 <svelte:window on:resize={handleResize} />
 
-<button type="button" aria-expanded={$open} aria-haspopup="menu" bind:this={button} on:click={show}>
+<button
+	type="button"
+	{disabled}
+	aria-expanded={$open}
+	aria-haspopup="menu"
+	bind:this={button}
+	on:click={show}
+>
 	<slot name="trigger">
 		<div>
 			<ChevronDown size="20" />
@@ -82,7 +96,6 @@
 	button > div {
 		--background-color: transparent;
 
-		cursor: pointer;
 		padding: 5px;
 		height: 32px;
 		width: 32px;
@@ -95,9 +108,10 @@
 		justify-content: center;
 	}
 
-	button[aria-expanded='true'] > div,
-	button > div:hover {
+	button:not(:disabled)[aria-expanded='true'] > div,
+	button:not(:disabled) > div:hover {
 		--background-color: var(--background-color-hover);
+		cursor: pointer;
 	}
 
 	div[role='menu'] {

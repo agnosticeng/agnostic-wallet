@@ -4,8 +4,9 @@ import type { LayoutServerLoad } from './$types';
 
 export const load = (async (event) => {
 	try {
+		event.depends('gas:price');
 		const gas = await GetEstimatedGasPrice({}, { fetch: event.fetch });
-		return { gas: Math.round(gas!.fast) };
+		return { gas };
 	} catch (e) {
 		console.error(e);
 		error(400);
