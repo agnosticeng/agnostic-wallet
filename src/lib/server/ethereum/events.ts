@@ -77,7 +77,7 @@ export async function GetEvents(variables: GetEventsVariables, opts: RequestOpti
 function transform(data?: GetEventsQuery) {
 	if (!data?.wallet_transfers_history?.length) return undefined;
 	return data.wallet_transfers_history.map((ev) => ({
-		id: toBase64(`${ev.token_address}:${ev.type}:${new Date(ev.timestamp).getTime()}`),
+		id: toBase64(`${ev.token_address}:${ev.type}:${new Date(ev.timestamp).getTime()}:${ev.amount}`),
 		timestamp: new Date(ev.timestamp),
 		type: ev.type,
 		token: {
