@@ -60,6 +60,11 @@ export async function GetTokens(variables: AssetsEthereumTokensVariables, opts: 
 
 	const json = await response.json();
 
+	if (json.errors) {
+		console.error(json.errors);
+		throw new Error('GetTokens failed');
+	}
+
 	return transform(json.data);
 }
 

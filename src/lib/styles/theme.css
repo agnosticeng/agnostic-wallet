@@ -5,9 +5,18 @@
 	--background-color-secondary: hsl(240deg 11% 96% / 100%);
 
 	--separator-color: hsl(0deg 0% 85% / 100%);
-	--menu-item-background-color-hover: hsl(220deg 6% 91% / 100%);
+	--background-color-hover: hsl(220deg 6% 91% / 100%);
 
 	--active-color: hsl(223deg 86% 55% / 100%);
+	--green-color: hsl(144deg 99% 33% / 100%);
+	--orange-color: hsl(34deg 100% 55% / 100%);
+	--red-color: hsl(0deg 100% 65% / 100%);
+	--grey-color: hsl(226deg 5% 53% / 100%);
+
+	--elevation-100: 0px 2px 4px hsl(240deg 8% 9% / 6%);
+	--elevation-200: 0px 0px 0px 1px hsl(240deg 19% 10% / 6%), 0px 8px 28px hsl(240deg 8% 9% / 8%);
+	--elevation-300: 0px 4px 8px -2px hsl(240deg 19% 10% / 8%),
+		0px 24px 48px -16px hsl(240deg 19% 10% / 24%);
 }
 
 :root.dark {
@@ -17,9 +26,19 @@
 	--background-color-secondary: hsl(0deg 0% 17% / 100%);
 
 	--separator-color: hsl(0deg 0% 26% / 100%);
-	--menu-item-background-color-hover: hsl(240deg 5% 19% / 100%);
+	--background-color-hover: hsl(240deg 5% 19% / 100%);
 
 	--active-color: hsl(200deg 100% 48% / 100%);
+	--green-color: hsl(133deg 47% 53% / 100%);
+	--orange-color: hsl(34deg 100% 55% / 100%);
+	--red-color: hsl(0deg 100% 68% / 100%);
+	--grey-color: hsl(222deg 4% 54% / 100%);
+
+	--elevation-100: 0px 2px 4px hsl(0deg 0% 0% / 24%);
+	--elevation-200: 0px 8px 12px hsl(0deg 0% 0% / 12%), 0px 2px 4px hsl(0deg 0% 0% / 16%),
+		inset 0px 1px 0px hsl(0deg 0% 100% / 5%);
+	--elevation-300: 0px 24px 48px hsl(0deg 0% 0% / 24%), 0px 4px 16px hsl(0deg 0% 0% / 16%),
+		inset 0px 1px 0px hsl(0deg 0% 100% / 8%);
 }
 
 :root {
@@ -30,6 +49,11 @@
 	/* typography */
 	--font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+	--elevation-100: 0px 2px 4px rgba(22, 22, 26, 0.06);
+	--elevation-200: 0px 0px 0px 1px rgba(21, 21, 31, 0.06), 0px 8px 28px rgba(22, 22, 26, 0.08);
+	--elevation-300: 0px 4px 8px -2px rgba(21, 21, 31, 0.08),
+		0px 24px 48px -16px rgba(21, 21, 31, 0.24);
 }
 
 @media screen and (max-width: 1200px) {

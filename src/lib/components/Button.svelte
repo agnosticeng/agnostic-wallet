@@ -16,6 +16,7 @@
 		outline: none;
 		border: none;
 		background: none;
+		color: currentColor;
 
 		padding: 9px 19px;
 		height: 40px;
@@ -27,5 +28,9 @@
 		align-items: center;
 
 		border: 1px solid var(--separator-color);
+	}
+
+	button:not(:disabled):hover {
+		background-color: var(--background-color-hover);
 	}
 </style>

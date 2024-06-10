@@ -14,9 +14,9 @@
 	button {
 		--background-color: transparent;
 
-		cursor: pointer;
 		border: none;
 		outline: none;
+		color: currentColor;
 		border-radius: 8px;
 		background-color: var(--background-color);
 		white-space: nowrap;
@@ -28,6 +28,7 @@
 	}
 
 	button:not(:disabled):hover {
-		--background-color: var(--menu-item-background-color-hover);
+		--background-color: var(--background-color-hover);
+		cursor: pointer;
 	}
 </style>

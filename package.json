@@ -33,7 +33,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@floating-ui/dom": "^1.6.5",
 		"blo": "^1.2.0",
+		"lightweight-charts": "^4.1.4",
 		"lucide-svelte": "^0.379.0",
 		"svelte-local-storage-store": "^0.6.4"
 	}
