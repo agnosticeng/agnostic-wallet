@@ -166,11 +166,11 @@
 		display: grid;
 		grid-auto-flow: column;
 		grid-auto-columns: minmax(min-content, max-content);
-		gap: 4px;
+		gap: 8px;
 		align-items: center;
 	}
 
 	.GasRow > div > span:not([data-kind]) {
-		font-size: 24px;
+		font-size: 20px;
 	}
 </style>
